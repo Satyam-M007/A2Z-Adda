@@ -11,657 +11,126 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap');
-        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        :root   {
-            -webkit-tap-highlight-color: #0000;
-            -webkit-user-select: none; 
-            -ms-user-select: none; 
-            user-select: none;
-        }
-
-        body{
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 100%;
-            -webkit-background-size: 100%;
-            -moz-background-size: 100%;
-            -o-background-size: 100%;
-            overflow: hidden;
-        }
-
-        #check {
-            display: none;
-        }
-
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #100b16;
-            background-repeat: no-repeat;
-            background-size: 100%;
-            background-position: 50% 50%;
-        }
-
-        .loader {
-            position: fixed;
-            z-index: 99999;
-            background-color: #100b16;
-            width: 100vw;
-            height: 100vh;
-            color: #e8e1ef;
-            display: flex;
-            opacity: 1;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Space Mono', monospace;
-            font-size: 1.25rem;
-            transition: all 250ms linear;
-        }
-
-        h1:hover {
-            cursor: pointer;
-            background-color: #e8e1ef;
-            color: #100b16;
-            border-radius: .25em;
-            padding: 1rem 2rem;
-            transition: all 200ms linear;
-        }
-
-        .container {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .dark .container{
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .dark .card{
-            position: relative;
-            width: 400px;
-            background-color: #00000060;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px 1px #0001;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .dark .card:before{
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 270px;
-            top: 0;
-            left: 0;
-            background-color: #734f96;
-            clip-path: circle(400px at 50% -48.5%);
-        }
-
-        .dark .header{
-            position: relative;
-            height: 265px;
-        }
-
-        .dark .mail{
-            position: absolute;
-            top: 1rem;
-            right: 2rem;
-            font-size: 1.5rem;
-            color: #1b262c;
-            opacity: .8;
-            transition: .3s;
-            z-index: 3;
-            text-decoration: none;
-        }
-
-        .dark .mail:hover{
-            opacity: 1;
-            transform: scale(1.07);
-        }
-
-        .dark .hamburger-menu{
-            position: absolute;
-            width: 21px;
-            height: 16px;
-            top: 1.4rem;
-            left: 1.9rem;
-            z-index: 3;
-            cursor: pointer;
-            transition: .3s;
-            opacity: .8;
-        }
-
-        .dark .hamburger-menu:hover{
-            opacity: 1;
-            position: absolute;
-            width: 25px;
-        }
-
-        .dark .hamburger-menu .center{
-            position: absolute;
-            height: 2px;
-            width: 70%;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #000;
-            border-radius: 1px;
-        }
-
-        .dark .hamburger-menu:before, .dark .hamburger-menu:after{
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            border-radius: 1px;
-            background-color: #000;
-        }
-
-        .dark .hamburger-menu:before{
-            top: 0;
-        }
-
-        .dark .hamburger-menu:after{
-            bottom: 0;
-        }
-
-        .dark .main{
-            position: absolute;
-            width: 100%; 
-            height: 100%;
-            top: 0;
-            left: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .dark .main .image{
-            position: relative;
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: url('https://graph.org/file/8976393261512e0663a0d.jpg') no-repeat center / cover;
-            border: 4px solid #24192f;
-            margin-bottom: 2px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .dark .image .hover{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: #734f96a9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            transition: .5s;
-            opacity: 0;
-        }
-
-        .dark .image:hover .hover{
-            opacity: 1;
-        }
-
-        .dark .hover.active{
-            opacity: 1;
-        }
-
-        .dark .name{
-            font-size: 1.2rem;
-            color: #fff;
-            font-weight: 500;
-            line-height: 1;
-            margin: 5px 0;
-        }
-
-        .dark .sub-name{
-            font-family: 'Titillium Web', sans-serif;
-            font-size: 1.2rem;
-            opacity: .8;
-            color: #fff;
-        }
-
-        .dark .content{
-            display: flex;
-            padding: 1.7rem 2.5rem 2.6rem 2.5rem;
-        }
-
-        .dark .right{
-            padding-top: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            text-align: right;
-            align-items: flex-end;
-            justify-content: space-between;
-            margin-left: 2.1rem;
-        }
-
-        .dark .number{
-            font-size: 2.1rem;
-            font-weight: 200;
-            color: #333;
-            line-height: 1.2;
-        }
-
-        .dark .number-title{
-            font-size: .55rem;
-            color: #666;
-            font-weight: 400;
-            line-height: 1;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .dark .title{
-            position: relative;
-            color: #fff;
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 0 0 3px 0;
-            margin-bottom: .9rem;
-            display: inline-block;
-        }
-
-        .dark .title:after{
-            content: '';
-            position: absolute;
-            height: 3px;
-            width: 50%;
-            background-color: #fff;
-            border-radius: 1.5px;
-            bottom: 0;
-            left: 0;
-        }
-
-        .dark .text{
-            color: #fff;
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
-        .dark .icons-container{
-            padding: 1rem 0;
-        }
-
-        .dark .icon{
-            color: #fff;
-            font-size: 1.3rem;
-            text-decoration: none;
-            margin-right: 8px;
-            transition: transform .3s, color .3s;
-        }
-
-        .dark .icon:hover{
-            color: #734f96;
-        }
-
-        .dark .buttons-wrap{
-            display: flex;
-            margin-top: 5px;
-        }
-
-        .dark .follow-wrap, .dark .share-wrap{
-            flex: 4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: .5s;
-        }
-
-        .dark .follow-wrap:hover, .dark .share-wrap:hover{
-            flex: 5;
-        }
-
-        .dark .follow{
-            padding: 9.6px 0;
-            width: 100%;
-            background: #734f96;
-            color: #000;
-            text-align: center;
-            text-decoration: none;
-            font-size: .7rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-radius: 18.1px;
-            margin-right: 3px;
-        }
-
-        .dark .share{
-            padding: 7.6px 0;
-            width: 100%;
-            border: 2px solid #734f96;
-            color: #734f96;
-            text-decoration: none;
-            text-align: center;
-            font-size: .7rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-left: 3px;
-            border-radius: 18.1px;
-        }
-
-        .dark .close{
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            transition: .3s;
-        }
-
-        .dark .close:hover{
-            opacity: .5;
-        }
-
-        .dark .close:before, .dark .close:after{
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            border-radius: 1.5px;
-            top: 50%;
-            left: 50%;
-            background-color: #fff;
-        }
-
-        .dark .close:before{
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-
-        .dark .close:after{
-            transform: translate(-50%, -50%) rotate(135deg);
-        }
-
-        .dark .sidebar {
-            position: absolute;
-            top: 50px;
-            left: 15px;
-            width: 45%;
-            z-index: 1000;
-            display: none;
-            background-color: #0005;
-            backdrop-filter: blur(12.5px);
-            border-radius: 10px;
-            border: 1px solid #00000025;
-        }
-
-        .dark .sidebar a {
-            color: #fff;
-            padding: 10px 15px;
-            text-decoration: none;
-            justify-content: center;
-            display: flex;
-            font-family: 'Poppins', sans-serif;
-            transition: transform 200ms ease-in;
-        }
-
-        .dark .sidebar a:hover {
-            transform: scale(1.2);
-        }
-
-        .light .container{
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .light .card{
-            position: relative;
-            width: 400px;
-            background-color: #ffffff60;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            backdrop-filter: blur(7.5px);
-        }
-
-        .light .card:before{
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 270px;
-            top: 0;
-            left: 0;
-            background-image: linear-gradient(to top, #7F00FF, #E100FF);
-            clip-path: circle(400px at 50% -48.5%);
-        }
-
-        .light .header{
-            position: relative;
-            height: 265px;
-        }
-
-        .light .mail{
-            position: absolute;
-            top: 1rem;
-            right: 2rem;
-            font-size: 1.5rem;
-            color: #fff;
-            opacity: .8;
-            transition: .3s;
-            z-index: 3;
-            text-decoration: none;
-        }
-
-        .light .mail:hover{
-            opacity: 1;
-            transform: scale(1.07);
-        }
-
-        .light .hamburger-menu{
-            position: absolute;
-            width: 21px;
-            height: 16px;
-            top: 1.4rem;
-            left: 1.9rem;
-            z-index: 3;
-            cursor: pointer;
-            transition: .3s;
-            opacity: .8;
-        }
-
-        .light .hamburger-menu:hover{
-            opacity: 1;
-            position: absolute;
-            width: 25px;
-        }
-
-        .light .hamburger-menu .center{
-            position: absolute;
-            height: 2px;
-            width: 70%;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #fff;
-            border-radius: 1px;
-        }
-
-        .light .hamburger-menu:before, .light .hamburger-menu:after{
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            border-radius: 1px;
-            background-color: #fff;
-        }
-
-        .light .hamburger-menu:before{
-            top: 0;
-        }
-
-        .light .hamburger-menu:after{
-            bottom: 0;
-        }
-
-        .light .main{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .light .main .image{
-            position: relative;
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: url('https://graph.org/file/8976393261512e0663a0d.jpg') no-repeat center / cover;
-            border: 4px solid #c300ff;
-            margin-bottom: 2px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .light .image .hover{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: #c300ffa1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            transition: .5s;
-            opacity: 0;
-        }
-
-        .light .image:hover .hover{
-            opacity: 1;
-        }
-
-        .light .hover.active{
-            opacity: 1;
-        }
-
-        .light .name{
-            font-size: 1.2rem;
-            color: #fff;
-            font-weight: 500;
-            line-height: 1;
-            margin: 5px 0;
-        }
-
-        .light .sub-name{
-            font-family: 'Titillium Web', sans-serif;
-            font-size: 1.2rem;
-            opacity: .8;
-            color: #fff;
-        }
-
-        .light .content{
-            display: flex;
-            padding: 1.7rem 2.5rem 2.6rem 2.5rem;
-        }
-
-        .light .right{
-            padding-top: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            text-align: right;
-            align-items: flex-end;
-            justify-content: space-between;
-            margin-left: 2.1rem;
-        }
-
-        .light .number{
-            font-size: 2.1rem;
-            font-weight: 200;
-            color: #333;
-            line-height: 1.2;
-        }
-
-        .light .number-title{
-            font-size: .55rem;
-            color: #666;
-            font-weight: 400;
-            line-height: 1;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .light .title{
-            position: relative;
-            color: #555;
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 0 0 3px 0;
-            margin-bottom: .9rem;
-            display: inline-block;
-        }
-
-        .light .title:after{
-            content: '';
-            position: absolute;
-            height: 3px;
-            width: 50%;
-            background-color: #555;
-            border-radius: 1.5px;
-            bottom: 0;
-            left: 0;
-        }
-
-
-        .light .text{
-            color: #666;
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
-        .light .icons-container{
-            padding: 1rem 0;
-        }
-
-        .light .icon{
-            color: #c4c4c4;
-            font-size: 1.3rem;
-            text-decoration: none;
-            margin-right: 8px;
-            transition: .3s;
-        }
-
-        .light .icon:hover{
-            color: #9D4EDD;
-        }
-
-        .light .buttons-wrap{
-            display: flex;
-            margin-top: 5px;
-        }
-
-        .light .follow-wrap, .light .share-wrap{
-            flex: 4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: .5s;
-        }
+    <link rel="stylesheet" href="src/style.css">
+    <title>I am Satyam Mishra (@Satyam_M007)</title>
+    <link rel="icon" href="https://vectorified.com/images/attack-on-titan-icon-31.png" type="image/x-icon">
+    <meta content="Satyam Portfolio" property="og:site_name">
+    <meta property="og:type" content="Satyam_M007">
+    <meta content="https://satya-mishra.github.io/" property="og:url">
+    <meta content="Satyam Mishra (@Satyam_M007)" property="og:title">
+    <meta content="" property="og:image">
+    <meta content="Satyam's Portfolio | One of the first web development projects by Satyam Mishra." property="og:description">
+</head>
+
+<body id="body" class="dark" oncontextmenu="return false">
+    <div class="loader" id="loader">
+        <h1 data-value="SATYAM" id="loader-text">Click me</h1>
+    </div>
+    <div id="particles-js"></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <div class="wrapper">
+        <div class="toggle">
+            <input class="toggle-input" type="checkbox" />
+            <div class="toggle-bg"></div>
+            <div class="toggle-switch">
+                <div class="toggle-switch-figure"></div>
+                <div class="toggle-switch-figureAlt"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal">
+        <img src="https://te.legra.ph/file/b7b808ffcf4023ae3957c.jpg" alt="">
+        <div class="close"></div>
+    </div>
+
+    <div id="container" class="container">
+        <input type="checkbox" name="" id="check">
+        <div class="card">
+            <div class="sidebar" id="sidebar">
+                <a class="active" href="#" onclick="openProjectsPage()">My Projects</a>
+                <a class="active" href="https://t.me/Satyam_M007">Telegram</a>
+                <a class="active" href="https://instagram.com/satyam__m007">Instagram</a>
+            </div>
+            <div class="header" onclick="toggle()">
+                <label for="check" class="checkbtn" id="chkbtn">
+                    <div class="hamburger-menu">
+                        <div class="center"></div>
+                    </div>
+                </label>
+                <a href="mailto: narayanamishra0000@gmail.com" class="mail">
+                    <i class="far fa-envelope"></i>
+                </a>
+                <div class="main">
+                    <div class="image">
+                        <div class="hover">
+                            <i class="fas fa-camera fa-2x"></i>
+                        </div>
+                    </div>
+                    <h3 class="name">Satyam Mishra</h3>
+                    <h3 class="sub-name">@Developer</h3>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="left">
+                    <div class="about-container">
+                        <h3 class="title">About</h3>
+                        <p class="text">~ Web Developer | AI Enthusiast ~</p>
+                        <p class="text">• Python | JavaScript | HTML | CSS •</p>
+                    </div>
+                    <div class="icons-container">
+                        <a href="https://t.me/Satyam_M007" class="icon">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://instagram.com/satyam__m007" class="icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="buttons-wrap">
+                        <div class="follow-wrap">
+                            <a href="#" onclick="openProjectsPage()" class="follow">My Projects</a>
+                        </div>
+                        <div class="share-wrap">
+                            <a href="#" onclick="openInfoPage()" class="share">More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        document.onkeydown = function (e) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        }
+
+        function openProjectsPage() {
+            window.location.href = "projects.html";
+        }
+
+        function openInfoPage() {
+            window.location.href = "info.html";
+        }
+    </script>
+    <script src="src/app.js"></script>
+    <script src="/src/contact-form.js" id="contactform" error_text="" success_text="" disable_waittime="true" form_worker_url="https://contactform.cfform.workers.dev/"></script>
+</body>
+</html>
 
        
